@@ -89,3 +89,18 @@ git clone https://github.com/arifian853/RAG_with_GroqAPI.git
 cd RAG_with_GroqAPI
 
 2. Install dependencies
+pip install -r requirements.txt
+
+3. Copy .env.example dan ubah namanya menjadi .env
+GROQ_API_KEY=your-groq-api-key
+
+4. Dapatkan API Key Groq kamu dari: https://console.groq.com/keys
+
+5. Jalankan aplikasi
+python app.py
+
+6. Aplikasi Gradio akan terbuka di browser:
+Upload file PDF
+Tanyakan pertanyaan berdasarkan isi PDF
+Model akan memberikan jawaban sesuai konteks
+
