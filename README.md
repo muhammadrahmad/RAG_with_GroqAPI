@@ -82,7 +82,7 @@ temperature=0.2  # Nilai default (rekomendasi untuk akurasi)
 
 1. **Clone Repository:**
 ```
-git clone https://github.com/yourusername/RAG_with_GroqAPI.git
+git clone https://github.com/muhammadrahmad/RAG_with_GroqAPI.git
 cd RAG_with_GroqAPI
 ```
 
