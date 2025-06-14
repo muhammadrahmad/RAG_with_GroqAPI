@@ -1,3 +1,4 @@
+
 # 📄 RAG_with_GroqAPI
 
 <h1 align="center">Retrieval-Augmented Generation with Gradio and Groq API</h1>
@@ -30,7 +31,7 @@ Proyek ini menerapkan pendekatan **Retrieval-Augmented Generation (RAG)** untuk 
 
 Model bisa diatur di fungsi `get_llm()` melalui parameter `model_name`.
 
-```
+```python
 def get_llm():
     return ChatGroq(
         groq_api_key=GROQ_API_KEY,
@@ -62,7 +63,7 @@ def get_llm():
 
 Parameter `temperature` digunakan untuk mengontrol tingkat kreativitas model.
 
-```
+```python
 temperature=0.2  # Nilai default (rekomendasi untuk akurasi)
 ```
 
@@ -81,32 +82,40 @@ temperature=0.2  # Nilai default (rekomendasi untuk akurasi)
 ### ✅ Langkah-langkah:
 
 1. **Clone Repository:**
-```
+```bash
 git clone https://github.com/muhammadrahmad/RAG_with_GroqAPI.git
 cd RAG_with_GroqAPI
 ```
 
-2. **Install Dependencies:**
+2. **Buat Virtual Environment (Opsional tapi Direkomendasikan):**
+```bash
+python -m venv venv
+# Aktifkan venv:
+# Untuk Windows:
+venv\Scripts\activate
+# Untuk macOS/Linux:
+source venv/bin/activate
 ```
+
+3. **Install Dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
-3. **Atur Environment Variable:**
-- Copy `.env.example` lalu ubah nama menjadi `.env`
-- Isi dengan Groq API Key:
-
-```
+4. **Atur Environment Variable:**
+- Copy file `.env.example` dan ubah namanya menjadi `.env`
+- Ganti `your-groq-api-key` dengan API key dari Groq:
+```bash
 GROQ_API_KEY=your-groq-api-key
 ```
+- Dapatkan API key dari: [https://console.groq.com/keys](https://console.groq.com/keys)
 
-- Dapatkan API key dari: https://console.groq.com/keys
-
-4. **Jalankan Aplikasi:**
-```
+5. **Jalankan Aplikasi:**
+```bash
 python app.py
 ```
 
-5. **Gunakan Gradio di browser:**
+6. **Gunakan Gradio di browser:**
 - Unggah file PDF
 - Ketik pertanyaan
 - Dapatkan jawaban dari LLM berdasarkan isi dokumen
@@ -127,7 +136,7 @@ RAG_with_GroqAPI/
 
 ## 📌 Example Use Case
 
-> PDF: SK KELULUSAN SDIT AN NAHL Seri Kuala Lobam
+> PDF: SK KELULUSAN SDIT AN NAHL Seri Kuala Lobam  
 > Pertanyaan: "Ada berapakah jumlah anak yang dinyatakan lulus?"  
 > Jawaban: *41 Anak*
 
