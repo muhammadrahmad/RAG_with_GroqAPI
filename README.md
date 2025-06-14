@@ -1,106 +1,146 @@
-# RAG_with_GroqAPI
-<h1 align="center">Retrieval-Augmented Generation with Gradio and Groq API Key</h1>
-<p align="center">Natural Language Processing Project</p>
+# 📄 RAG_with_GroqAPI
+
+<h1 align="center">Retrieval-Augmented Generation with Gradio and Groq API</h1>
+<p align="center">Natural Language Processing Final Project</p>
 
 <div align="center">
-
-<img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
-
+  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
 </div>
 
-### Name : Muhammad Rahmad
-### Tech Stack : Python, Gradio, LangChain, HuggingFace Embeddings, FAISS, Groq API
+### 👤 Name : Muhammad Rahmad  
+### 🧠 Tech Stack : Python, Gradio, LangChain, HuggingFace Embeddings, FAISS, Groq API
 
 ---
 
-### 1. Analysis about how the project works
+## 🔍 1. Project Overview
 
-Proyek ini menggunakan pendekatan **Retrieval-Augmented Generation (RAG)** untuk menjawab pertanyaan dari file PDF.
+Proyek ini menerapkan pendekatan **Retrieval-Augmented Generation (RAG)** untuk menjawab pertanyaan dari isi file PDF menggunakan model LLM dari Groq. Dibangun dengan antarmuka **Gradio**, proyek ini memungkinkan pengguna mengunggah PDF, mengajukan pertanyaan, dan mendapatkan jawaban yang relevan.
 
-#### Alur kerja:
-1. **PDF Upload**: Pengguna mengunggah file PDF lewat Gradio.
-2. **Loading dan Split**: PDF dibaca dan dipecah menjadi chunks (1000 karakter dengan overlap 200).
-3. **Embedding**: Chunks diubah menjadi vektor menggunakan model `sentence-transformers/all-MiniLM-L6-v2`.
-4. **Indexing**: Vektor disimpan di FAISS vector store.
-5. **Retrieval**: Top 4 dokumen yang paling relevan diambil untuk setiap pertanyaan.
-6. **LLM Response**: Dokumen + pertanyaan dikirim ke LLM dari Groq API untuk menghasilkan jawaban.
+### 📌 Alur Kerja:
+1. **Upload File PDF** melalui antarmuka Gradio.
+2. **Split PDF** menjadi potongan teks (chunk) menggunakan `CharacterTextSplitter`.
+3. **Embedding** menggunakan `sentence-transformers/all-MiniLM-L6-v2`.
+4. **Indexing** dengan FAISS vector store.
+5. **Retrieval** dokumen paling relevan.
+6. **Generasi Jawaban** menggunakan model LLM dari Groq API.
 
 ---
 
-### 2. Analysis about how different every model works on Retrieval-Augmented Generation
+## 🧪 2. Model Comparison
 
-Model dapat diubah lewat parameter `model_name` di fungsi `get_llm()`:
+Model bisa diatur di fungsi `get_llm()` melalui parameter `model_name`.
 
-```python
+```
 def get_llm():
     return ChatGroq(
         groq_api_key=GROQ_API_KEY,
-        model_name="llama-3.3-70b-versatile",  # Ubah di sini
+        model_name="llama-3.3-70b-versatile",
         temperature=0.2
     )
+```
 
-2.1 llama-3.3-70b-versatile
-Model besar dan sangat akurat.
+### ✨ 2.1 `llama-3.3-70b-versatile`
+- Model besar dan akurat
+- Jawaban lengkap dan relevan
+- Cocok untuk pertanyaan teknis
+- Waktu respons lebih lama
 
-Jawaban panjang dan sesuai konteks PDF.
+### ⚡ 2.2 `deepseek-r1-distill-llama-70b`
+- Model distilasi dari LLaMA
+- Lebih cepat dari llama-3.3
+- Gaya jawaban lebih ringkas
+- Kurang detail pada pertanyaan kompleks
 
-Cocok untuk pertanyaan mendalam atau teknis.
+### ⚙️ 2.3 `gemma2-9b-it`
+- Model kecil dan sangat cepat
+- Jawaban cenderung lebih umum
+- Kurang cocok untuk pertanyaan teknis mendalam
 
-Waktu respons lebih lama.
+---
 
-2.2 deepseek-r1-distill-llama-70b
-Distilasi model LLaMA.
+## 🌡️ 3. Temperature Tuning
 
-Jawaban cepat dan tetap cukup akurat.
+Parameter `temperature` digunakan untuk mengontrol tingkat kreativitas model.
 
-Gaya bahasa ringkas dan efisien.
+```
+temperature=0.2  # Nilai default (rekomendasi untuk akurasi)
+```
 
-Tidak sedalam llama-3.3, tapi cocok untuk user experience ringan.
+### 🔥 3.1 Higher Temperature (> 0.7)
+- Jawaban lebih kreatif dan variatif
+- Berisiko menghasilkan informasi yang tidak akurat (halusinasi)
 
-2.3 gemma2-9b-it
-Model kecil, respons sangat cepat.
+### 🧊 3.2 Lower Temperature (< 0.3)
+- Jawaban lebih akurat dan konsisten
+- Kurang fleksibel atau terlalu kaku
 
-Jawaban cenderung lebih umum dan kadang terlalu singkat.
+---
 
-Kurang cocok untuk detail teknis.
+## 🚀 4. How to Run This Project
 
-3. Analysis about how temperature works
-Temperatur dikontrol di fungsi get_llm():
+### ✅ Langkah-langkah:
 
-temperature=0.2  # nilai default, bisa diubah
-
-3.1 Higher temperature (> 0.7)
-Jawaban menjadi lebih kreatif dan beragam.
-
-Meningkatkan risiko "halusinasi" atau informasi yang tidak sesuai dokumen.
-
-Bisa digunakan untuk brainstorming, bukan fakta akurat.
-
-3.2 Lower temperature (< 0.3)
-Jawaban cenderung konsisten, deterministik, dan sesuai dokumen.
-
-Cocok untuk Q&A berbasis fakta, seperti isi PDF.
-
-Jawaban kurang variatif.
-
-4. How to run the project
-1. Clone repository
-git clone https://github.com/arifian853/RAG_with_GroqAPI.git
+1. **Clone Repository:**
+```
+git clone https://github.com/yourusername/RAG_with_GroqAPI.git
 cd RAG_with_GroqAPI
+```
 
-2. Install dependencies
+2. **Install Dependencies:**
+```
 pip install -r requirements.txt
+```
 
-3. Copy .env.example dan ubah namanya menjadi .env
+3. **Atur Environment Variable:**
+- Copy `.env.example` lalu ubah nama menjadi `.env`
+- Isi dengan Groq API Key:
+
+```
 GROQ_API_KEY=your-groq-api-key
+```
 
-4. Dapatkan API Key Groq kamu dari: https://console.groq.com/keys
+- Dapatkan API key dari: https://console.groq.com/keys
 
-5. Jalankan aplikasi
+4. **Jalankan Aplikasi:**
+```
 python app.py
+```
 
-6. Aplikasi Gradio akan terbuka di browser:
-Upload file PDF
-Tanyakan pertanyaan berdasarkan isi PDF
-Model akan memberikan jawaban sesuai konteks
+5. **Gunakan Gradio di browser:**
+- Unggah file PDF
+- Ketik pertanyaan
+- Dapatkan jawaban dari LLM berdasarkan isi dokumen
 
+---
+
+## 📁 File Structure
+
+```
+RAG_with_GroqAPI/
+├── app.py
+├── .env.example
+├── requirements.txt
+├── README.md
+```
+
+---
+
+## 📌 Example Use Case
+
+> PDF: Panduan Data Science  
+> Pertanyaan: "Apa itu supervised learning?"  
+> Jawaban: *Supervised learning adalah metode pembelajaran mesin dengan data berlabel...* (hasil dari LLM).
+
+---
+
+## 🛠️ Future Work
+
+- Tambahkan dukungan untuk multi-file
+- Tambah fitur simpan riwayat pertanyaan
+- UI lebih interaktif dengan chat-style
+
+---
+
+## 📃 License
+
+This project is licensed under the MIT License.
