@@ -127,9 +127,9 @@ RAG_with_GroqAPI/
 
 ## 📌 Example Use Case
 
-> PDF: Panduan Data Science  
-> Pertanyaan: "Apa itu supervised learning?"  
-> Jawaban: *Supervised learning adalah metode pembelajaran mesin dengan data berlabel...* (hasil dari LLM).
+> PDF: SK KELULUSAN SDIT AN NAHL Seri Kuala Lobam
+> Pertanyaan: "Ada berapakah jumlah anak yang dinyatakan lulus?"  
+> Jawaban: *41 Anak*
 
 ---
 
